@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+    <title>Personas</title>
+    <th:block th:include="layout/header"></th:block>
+</head>
+<body  style="background-image: url('../images/fondo-blanco.jpg');">
+<div class="container">
+    <div th:if="${not #lists.isEmpty(persona)}">
+        <h2>Todas las personas</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+            </tr>
+            <tr th:each="persona : ${persona}">
+                <td th:text="${persona.id}">Id</td>
+                <td th:text="${persona.nombre}">Nombre</td>
+                <td th:text="${persona.apellido}">Apellido</td>
+                <td><a th:href="${'/persona/editar/' + persona.id}" class="btn btn-default">Editar</a></td>
+                <td><a th:href="${'/persona/borrar/' + persona.id}" class="btn btn-danger">Eliminar</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

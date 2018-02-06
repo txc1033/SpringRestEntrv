@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+    <title>Formulario Persona</title>
+    <th:block th:include="layout/header"></th:block>
+</head>
+<body  style="background-image: url('../images/fondo-blanco.jpg');">
+<div class="container">
+    <h2>Formulario Persona</h2>
+    <div>
+        <form class="form-horizontal" th:object="${persona}" th:action="@{/persona}" method="post">
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="hidden" class="form-control" th:field="*{id}"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Nombre:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{nombre}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Apellido:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{apellido}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
