@@ -1,11 +1,11 @@
-package com.javifast.saludo;
+package com.javifast.model;
 
-public class Greeting {
+public class Persona {
 
     private final long id;
     private final String content;
 
-    public Greeting(long id, String content) {
+    public Persona(long id, String content) {
         this.id = id;
         this.content = content;
     }
