@@ -44,7 +44,11 @@ si utilizar una peticion get recibiras la lista total de los usuarios agregados
 
 https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[java 1.8]
 --
+Aqui debes elejir un constructor
+--
 https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-gradle.adoc[gradle]
+--
+o puede ser
 --
 https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-maven.adoc[maven]
 
