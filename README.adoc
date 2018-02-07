@@ -5,9 +5,8 @@ detalle: REST usando Spring MVC, JPA y BOOT. Con la Base de datos Mysql, operaci
          sobre una entidad Persona (atributos: Nombre y Apellido) con MVC agregado. 
 ---
 == Antes de comenzar
-Primero realizaremos un git clone [a link](https://github.com/txc1033/SpringRestEntrv.git)
-
-o puedes descargarlo en .zip [a link](https://github.com/txc1033/SpringRestEntrv/archive/master.zip)
+Primero realizaremos un git https://github.com/txc1033/SpringRestEntrv.git[clone]
+o puedes descargarlo en https://github.com/txc1033/SpringRestEntrv/archive/master.zip[.zip]
 
 una vez descargado nos dirijimos a la carpeta del proyecto en /complete/src/db
 agregamos el archivo data_base.sql a nuestro entorno local
@@ -28,6 +27,7 @@ con esto estaria ejecutandose nuestro servicio :D
 == Como utilizarlo
 
 http://localhost:8080/ ---> modelo de MVC
+
 http://localhost:8080/rest ---> servicio REST
 
 si utilizar una peticion get recibiras la lista total de los usuarios agregados
@@ -42,17 +42,11 @@ si utilizar una peticion get recibiras la lista total de los usuarios agregados
 
 == Lo que necesitas
 
-:java_version: 1.8
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
-
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
-
-
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-gradle.adoc[]
-
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-maven.adoc[]
-
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-sts.adoc[]
+https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[java 1.8]
+--
+https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-gradle.adoc[gradle]
+--
+https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-maven.adoc[maven]
 
 
 
