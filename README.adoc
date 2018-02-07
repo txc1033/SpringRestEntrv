@@ -1,8 +1,8 @@
 ---
 nombre: Servicio RestFull
 
-detalle: REST usando Spring MVC, JPA y BOOT. Con la Base de datos Mysql, operaciones GET, PUT, POST y DELETE 
-         sobre una entidad Persona (atributos: Nombre y Apellido) con MVC agregado. 
+detalle: REST usando Spring MVC, JPA y BOOT. Con la Base de datos Mysql, operaciones GET, PUT, POST y DELETE sobre una entidad Persona (atributos: Nombre y Apellido) con MVC agregado. 
+
 ---
 == Antes de comenzar
 Primero realizaremos un git https://github.com/txc1033/SpringRestEntrv.git[clone]
