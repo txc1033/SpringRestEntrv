@@ -2,6 +2,8 @@ package com.javifast.controller;
 
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,37 +26,38 @@ public class PersonaRest {
 	@Autowired
 	private PersonaService personaService;
 	
-    @RequestMapping(value = "/rest", method = RequestMethod.GET)
-    public ResponseEntity<List<Persona>> llamarAllPersona() {
-		List<Persona> list = (List<Persona>) personaService.listaPersona();
+    @RequestMapping(value = "/personas", method = RequestMethod.GET)
+    public ResponseEntity<List<Persona>> getAllPersona() {
+		List<Persona> list = (List<Persona>) personaService.AllPersona();
 		return new ResponseEntity<List<Persona>>(list, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/rest/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Persona> llamarPersona(@PathVariable("id") Integer id) {
+    @RequestMapping(value = "/personas/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Persona> getPersonaId(@PathVariable("id") Integer id) {
     	Persona persona = personaService.getPersonaId(id);
 		return new ResponseEntity<Persona>(persona, HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/rest", method = RequestMethod.POST)
-    public ResponseEntity<Void> agregarPersona(@RequestBody Persona persona, UriComponentsBuilder builder) {
-        boolean flag = personaService.savePersona(persona) != null;
-        if (flag == false) {
-        	return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-        }
+    @RequestMapping(value = "/personas", method = RequestMethod.POST)
+    public ResponseEntity<Void> addPersona(@RequestBody Persona persona, UriComponentsBuilder builder) {
+    	try {
+        personaService.savePersona(persona);
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/article/{id}").buildAndExpand(persona.getId()).toUri());
+        headers.setLocation(builder.path("/personas/{id}").buildAndExpand(persona.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+    	}catch(ConstraintViolationException e) {
+    		return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+    	}
     }
     
-    @RequestMapping(value = "/rest", method = RequestMethod.PUT)
-    public ResponseEntity<Persona> actualizarPersona(@RequestBody Persona persona) {
+    @RequestMapping(value = "/personas", method = RequestMethod.PUT)
+    public ResponseEntity<Persona> updatePersona(@RequestBody Persona persona) {
 		personaService.savePersona(persona);
 		return new ResponseEntity<Persona>(persona, HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/rest/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> eliminarPersona(@PathVariable("id") Integer id) {
+    @RequestMapping(value = "/personas/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deletPersona(@PathVariable("id") Integer id) {
 		personaService.deletPersona(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}	

@@ -13,7 +13,7 @@ public class PersonaSericeImpl implements PersonaService {
 	private PersonaRepository personaRepository;
 	
 	@Override
-	public Iterable<Persona> listaPersona() {
+	public Iterable<Persona> AllPersona() {
 		return personaRepository.findAll();
 	}
 

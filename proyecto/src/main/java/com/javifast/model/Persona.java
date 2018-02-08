@@ -2,7 +2,9 @@ package com.javifast.model;
 
 
 
-import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,10 +20,10 @@ public class Persona {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
     private Integer id;
-	@NotNull
+	@NotEmpty
 	@Column(name="nombre")
     private String nombre;
-	@NotNull
+	@NotEmpty
 	@Column(name="apellido")
     private String apellido;
 

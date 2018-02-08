@@ -2,6 +2,8 @@ package com.javifast.controller;
 
 
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,33 +28,39 @@ public class PersonaController {
     }
 	
 	@RequestMapping(value= "/persona", method = RequestMethod.GET)
-	public Model list(Model modelo) {
-		modelo.addAttribute("persona", personaService.listaPersona());
+	public Model showAllPersona(Model modelo) {
+		modelo.addAttribute("persona", personaService.AllPersona());
 		return modelo;
 	}
 	
 	@RequestMapping(value= "/persona/{id}")
-	public String mostrarPersona(@PathVariable Integer id,Model modelo) {
+	public String showPersona(@PathVariable Integer id,Model modelo) {
 		modelo.addAttribute("persona", personaService.getPersonaId(id));
 		return "persona";
 	}
 	
 	@RequestMapping(value= "/persona/editar/{id}")
-	public String editar(@PathVariable Integer id,Model modelo) {
+	public String editPersona(@PathVariable Integer id,Model modelo) {
 		modelo.addAttribute("persona", personaService.getPersonaId(id));
 		return "formulario";
 	}
 	
 	@RequestMapping(value= "/persona/nuevo")
-	public String nuevaPersona(Model modelo) {
-		modelo.addAttribute("persona", new Persona(0, null, null));
+	public String newPersona(Model modelo) {
+		int id = 0;String nombre="",apellido="";
+		Persona p = new Persona(id,nombre,apellido);
+		modelo.addAttribute("persona",p);
 		return "formulario";
 	}
 	
 	@RequestMapping(value= "/persona", method = RequestMethod.POST)
 	public String savePersona(Persona persona) {
+		try {
 		personaService.savePersona(persona);
 		return "redirect:/persona/";
+		}catch(ConstraintViolationException e) {
+			return "redirect:/persona/nuevo";
+		}
 	}
 	
 	@RequestMapping(value= "/persona/borrar/{id}")
